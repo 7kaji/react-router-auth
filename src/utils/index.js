@@ -1,17 +1,20 @@
-const TOKEN_KEY = 'jwt';
+const liff = window.liff;
 
 export const login = () => {
-  localStorage.setItem(TOKEN_KEY, 'TestLogin');
+  console.log('login');
+  liff.init({ liffId: process.env.REACT_APP_LIFF_ID });
+  liff.login();
 }
 
 export const logout = () => {
-  localStorage.removeItem(TOKEN_KEY);
+  console.log('logout');
+  liff.init({ liffId: process.env.REACT_APP_LIFF_ID });
+  liff.logout();
 }
 
 export const isLogin = () => {
-  if (localStorage.getItem(TOKEN_KEY)) {
-      return true;
-  }
-
-  return false;
+  console.log('isLogin');
+  liff.init({ liffId: process.env.REACT_APP_LIFF_ID });
+  return liff.isLoggedIn();
 }
+
